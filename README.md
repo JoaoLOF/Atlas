@@ -1,75 +1,67 @@
-# React + TypeScript + Vite
+# Atlas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Sistema desktop de gestão empresarial**
 
-Currently, two official plugins are available:
+O Atlas é um sistema desktop de gestão empresarial desenvolvido para auxiliar pequenas e médias empresas no controle de suas operações administrativas, financeiras e de estoque.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O projeto tem como objetivo centralizar informações e facilitar atividades como cadastro de produtos, controle de estoque, registro de compras e vendas e acompanhamento de contas a pagar e a receber.
 
-## React Compiler
+> **Status: Em desenvolvimento**
+>
+> O Atlas ainda não está finalizado. Novas funcionalidades estão sendo implementadas e os módulos existentes podem passar por melhorias e ajustes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologias utilizadas
 
-## Expanding the ESLint configuration
+- **React** – Construção da interface do usuário.
+- **TypeScript** – Tipagem estática e maior segurança no desenvolvimento.
+- **Vite** – Ferramenta de desenvolvimento e build do frontend.
+- **Electron** – Desenvolvimento da aplicação desktop.
+- **SQLite** – Banco de dados relacional local.
+- **better-sqlite3** – Integração entre Node.js e SQLite.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O sistema está sendo desenvolvido em módulos, contemplando diferentes áreas da gestão empresarial.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Produtos e cadastros
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Cadastro e gerenciamento de produtos.
+- Cadastro de categorias de produtos.
+- Cadastro de unidades de medida.
+- Cadastro e gerenciamento de fornecedores.
+- Cadastro e gerenciamento de clientes.
 
-```
+### Controle de estoque
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+- Registro de entradas de mercadorias.
+- Registro e consulta de movimentações de estoque.
+- Atualização automática do estoque a partir das operações de entrada.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Compras
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Registro de entradas de mercadorias.
+- Associação de entradas a fornecedores.
+- Registro de informações de notas fiscais.
+- Integração das compras com o controle de estoque.
 
-```
+### Vendas
+
+- Registro de vendas.
+- Associação de vendas a clientes.
+- Registro dos produtos e quantidades vendidos.
+
+### Financeiro
+
+- Cadastro e acompanhamento de contas a pagar.
+- Registro de pagamentos.
+- Controle de juros e descontos.
+- Cálculo de saldos pendentes.
+- Desenvolvimento do módulo de contas a receber.
+
+## Arquitetura
+
+O Atlas utiliza uma arquitetura desktop baseada em Electron, com React responsável pela interface e SQLite como banco de dados local.
+
+A comunicação entre o frontend e o backend é realizada por meio de IPC (Inter-Process Communication) do Electron.
+
+O banco de dados é armazenado localmente, permitindo que a aplicação funcione sem depender de um servidor externo para suas operações.
